@@ -57,7 +57,6 @@ export class UserDetails {
   //#region Experience Functions
   addExperience() {
     this.experiences.push(this.createAddExperienceFormGroupInstance());
-    console.log(this.profileForm)
   }
 
   removeExperience(i: any) {
@@ -119,8 +118,8 @@ export class UserDetails {
   //#region Degree Function
   createDegreeInstance() {
     return this.fb.group({
-      degree: ['', Validators.required],
-      institution: ['', Validators.required],
+      degree: [''],
+      institution: [''],
       start_date: [''],
       end_date: [''],
       score: ['']

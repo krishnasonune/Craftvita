@@ -125,10 +125,10 @@
     <p class="fs-3 mt-5 mb-0">Projects</p>
     <hr class="mb-3 mt-0">
 
-    <div>
-        <div class="fs-5 p-1" *ngFor="let project of projects"><a href={{project.link}} class="fs-5">{{project.title}} |
-                {{project.technologies.join(' ')}}</a>
-            {{project.description}}</div>
+    <div *ngFor="let project of projects">
+        <div class="fs-5 p-1"><a href={{project?.link}} class="fs-5">{{project?.title}} |
+                {{project?.technologies}}</a>
+            {{project?.description}}</div>
 
         <!-- <div class="fs-5 p-1"><a href="" class="fs-5">API Gateway Service | Dotnet Core </a> implemented Gateway
             service to route client’s requests to the appropriated microservices.</div>
@@ -209,7 +209,7 @@
 
                 <span class="fs-5">
                     <ul class="m-0 p-0">
-                        <li *ngFor="let interest of interests">{{interest.name}}</li>
+                        <li *ngFor="let interest of interests">{{interest}}</li>
                     </ul>
                 </span>
             </span>

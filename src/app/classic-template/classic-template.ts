@@ -29,17 +29,18 @@ export class ClassicTemplate {
   degrees !: IEducation[];
   certifications !: ICertification[];
   achievements !: IAchievement[];
-  interests !: IInterest[];
+  interests !: string[];
   userProfile !: ProfileDTO;
 
-  constructor(private service : ServiceService) {}
+  constructor(private service : ServiceService) {
+    this.userProfile = this.service.getProfile();
+  }
 
   downloadpdf() {
     window.print()
   }
 
   getUserProfile(){
-    this.userProfile = this.service.getProfile();
 
     this.full_name = this.userProfile?.full_name != null ? this.userProfile?.full_name : '';
     this.location = this.userProfile?.location != null ? this.userProfile?.location : '';
@@ -54,7 +55,7 @@ export class ClassicTemplate {
 
     this.experiences = this.userProfile?.experience?.length != null ? this.userProfile?.experience : [];
 
-    this.projects = this.userProfile?.project?.length != null ? this.userProfile?.project : [];
+    this.projects = this.userProfile?.project != null ? this.userProfile?.project : [];
 
     this.technical_skills = this.userProfile?.technical_skills != null ? this.userProfile?.technical_skills : '';
 

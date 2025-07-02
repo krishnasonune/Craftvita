@@ -20,5 +20,5 @@ export interface ProfileDTO {
   degree?: IEducation[];
   certification?: ICertification[];
   achievement?: IAchievement[];
-  interest?: IInterest[];
+  interest?: string[];
 }
