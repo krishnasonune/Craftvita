@@ -1,6 +1,6 @@
 export interface IProject {
     title: string;
-    technologies: string[];
+    technologies: string;
     description: string;
     link?: string;
 }

@@ -4,13 +4,13 @@
     <!-- Full Name -->
     <div class="mb-4">
       <label class="form-label fs-4 fw-bold">Full Name</label>
-      <input formControlName="full_name" class="form-control fs-5">
+      <input formControlName="full_name" class="form-control fs-5" placeholder="enter name ( camel case )">
     </div>
 
     <!-- About Me -->
     <div class="mb-4">
       <label class="form-label fs-4 fw-bold">About Me</label>
-      <textarea formControlName="about_me" rows="4" class="form-control fs-5"></textarea>
+      <textarea formControlName="about_me" rows="4" class="form-control fs-5" placeholder="enter description"></textarea>
     </div>
 
     <!-- Technical Skills -->
@@ -32,23 +32,23 @@
       </div>
       <div class="col-md-4">
         <label class="form-label fs-4 fw-bold">Portfolio URL</label>
-        <input formControlName="portfolio" class="form-control fs-5" />
+        <input formControlName="portfolio" class="form-control fs-5" placeholder="https://" />
       </div>
       <div class="col-md-4">
         <label class="form-label fs-4 fw-bold">Gmail</label>
-        <input formControlName="gmail" class="form-control fs-5" />
+        <input formControlName="gmail" class="form-control fs-5" placeholder="https://" />
       </div>
       <div class="col-md-4">
         <label class="form-label fs-4 fw-bold">GitHub</label>
-        <input formControlName="github" class="form-control fs-5" />
+        <input formControlName="github" class="form-control fs-5" placeholder="https://" />
       </div>
       <div class="col-md-4">
         <label class="form-label fs-4 fw-bold">StackOverflow</label>
-        <input formControlName="stackoverflow" class="form-control fs-5" />
+        <input formControlName="stackoverflow" class="form-control fs-5" placeholder="https://" />
       </div>
       <div class="col-md-4">
         <label class="form-label fs-4 fw-bold">LinkedIn</label>
-        <input formControlName="linkedin" class="form-control fs-5" />
+        <input formControlName="linkedin" class="form-control fs-5" placeholder="https://" />
       </div>
     </div>
 
@@ -61,20 +61,20 @@
             <div [formGroupName]="i">
               <div class="mb-2">
                 <label class="form-label fs-4 fw-bold">Company Name</label>
-                <input class="form-control fs-5" formControlName="comp_name" />
+                <input class="form-control fs-5" formControlName="comp_name" placeholder="enter company name" />
               </div>
               <div class="mb-2">
                 <label class="form-label fs-4 fw-bold">Designation</label>
-                <input class="form-control fs-5" formControlName="designation" />
+                <input class="form-control fs-5" formControlName="designation" placeholder="enter designation" />
               </div>
               <div class="row mb-2">
                 <div class="col">
                   <label class="form-label fs-4 fw-bold">Start Date</label>
-                  <input class="form-control fs-5" formControlName="start_date" />
+                  <input class="form-control fs-5" formControlName="start_date" placeholder="Jan 2020" />
                 </div>
                 <div class="col">
                   <label class="form-label fs-4 fw-bold">End Date</label>
-                  <input class="form-control fs-5" formControlName="end_date" />
+                  <input class="form-control fs-5" formControlName="end_date" placeholder="Jul 2023 / Present" />
                 </div>
 
               </div>
@@ -85,17 +85,17 @@
 
                 <div>
                   <span *ngFor="let des of descriptions(i).controls; let j = index">
-                    <input class="form-control fs-5 mb-3" type="text" formControlName="{{j}}">
+                    <input class="form-control fs-5 mb-3" type="text" formControlName="{{j}}" placeholder="enter point">
                     <i class="bi bi-trash3-fill fs-2" (click)="removePoint(i, j)"></i>
                   </span>
                 </div>
               </div>
 
             </div>
-            <button class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeExperience(i)">Remove</button>
+            <button type="button" class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeExperience(i)">Remove</button>
           </div>
           <div class="text-end">
-            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add Experience</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add Experience</button>
           </div>
 
         </div>
@@ -112,19 +112,19 @@
           <div [formGroupName]="i">
             <div class="mb-2">
               <label class="form-label fs-4 fw-bold">Title</label>
-              <input formControlName="title" class="form-control fs-5" />
+              <input formControlName="title" class="form-control fs-5" placeholder="enter title" />
             </div>
             <div class="mb-2">
               <label class="form-label fs-4 fw-bold">Technologies (comma-separated)</label>
-              <input formControlName="technologies" class="form-control fs-5" />
+              <input formControlName="technologies" class="form-control fs-5" placeholder="eg. Angular, .NET etc" />
             </div>
             <div class="mb-2">
               <label class="form-label fs-4 fw-bold">Description</label>
-              <input formControlName="description" class="form-control fs-5" />
+              <input formControlName="description" class="form-control fs-5" placeholder="enter description" />
             </div>
             <div class="mb-2">
               <label class="form-label fs-4 fw-bold">Link</label>
-              <input formControlName="link" class="form-control fs-5" />
+              <input formControlName="link" class="form-control fs-5" placeholder="https://" />
             </div>
           </div>
 
@@ -132,7 +132,7 @@
         </div>
 
         <div class="text-end">
-          <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addProject()">Add Project</button>
+          <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addProject()">Add Project</button>
         </div>
       </div>
     </div>
@@ -149,27 +149,28 @@
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">Degree</label>
-                  <input type="text" class="form-control fs-5" formControlName="degree" />
+                  <input type="text" class="form-control fs-5" formControlName="degree" placeholder="MCA, B.Sc" />
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">Institution</label>
-                  <input type="text" class="form-control fs-5" formControlName="institution" />
+                  <input type="text" class="form-control fs-5" formControlName="institution" placeholder="Mumbai University" />
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">Start Date</label>
-                  <input type="text" class="form-control fs-5" formControlName="start_date" />
+                  <input type="text" class="form-control fs-5" formControlName="start_date" placeholder="Jan 2018" />
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">End Date</label>
-                  <input type="text" class="form-control fs-5" formControlName="end_date" />
+                  <input type="text" class="form-control fs-5" formControlName="end_date" placeholder="Jul 2021 / Present" />
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">Score</label>
-                  <input type="text" class="form-control fs-5" formControlName="score" />
+                  <input type="text" class="form-control fs-5" formControlName="score"
+                  placeholder="CGPA, percentage etc" />
                 </div>
 
               </div>
@@ -178,7 +179,7 @@
           </div>
 
           <div class="text-end">
-            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add Education</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add Education</button>
           </div>
 
         </div>
@@ -194,17 +195,17 @@
             <div [formGroupName]="i">
               <div class="col-md-6">
                 <label class="form-label fs-4 fw-bold">Title</label>
-                <input type="text" class="form-control fs-5" formControlName="title" />
+                <input type="text" class="form-control fs-5" formControlName="title" placeholder="MongoDB, Docker" />
               </div>
               <div class="col-md-6">
                 <label class="form-label fs-4 fw-bold">Issuer</label>
-                <input type="text" class="form-control fs-5" formControlName="issuer" />
+                <input type="text" class="form-control fs-5" formControlName="issuer" placeholder="Udemy, Coursera" />
               </div>
             </div>
             <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeCertificate(i)"></i>
           </div>
           <div class="text-end">
-            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add Certification</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add Certification</button>
           </div>
 
         </div>
@@ -221,18 +222,18 @@
             <div [formGroupName]="i">
               <div class="col-md-6">
                 <label class="form-label fs-4 fw-bold">Title</label>
-                <input type="text" class="form-control fs-5" formControlName="title" />
+                <input type="text" class="form-control fs-5" formControlName="title" placeholder="Problem solving" />
               </div>
               <div class="col-md-6">
                 <label class="form-label fs-4 fw-bold">Description</label>
-                <input type="text" class="form-control fs-5" formControlName="description" />
+                <input type="text" class="form-control fs-5" formControlName="description" placeholder="5 star Problem solving skill hacker rank" />
               </div>
             </div>
             <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeAchievement(i)"></i>
           </div>
 
           <div class="text-end">
-            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add Achievements</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add Achievements</button>
           </div>
 
         </div>
@@ -248,13 +249,13 @@
           <div formArrayName="interest">
             <label class="form-label fs-4 fw-bold">Title</label>
             <div *ngFor="let interest of interests.controls; let i = index" class="mb-2">
-              <input type="text" class="form-control" [formControlName]="i" />
+              <input type="text" class="form-control" [formControlName]="i" placeholder="solving rubik's cube, coding etc" />
               <i class="bi-trash3-fill fs-2" (click)="removeInterest(i)"></i>
             </div>
           </div>
 
           <div class="text-end">
-            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add Interests</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add Interests</button>
           </div>
 
         </div>
