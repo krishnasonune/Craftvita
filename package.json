@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "ghbuild": "ng build --base-href 'https://krishnasonune.github.io/resume-builder'",
+    "ghpublish": "ngh --dir dist/resumebuilder"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +20,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "angular-cli-ghpages": "^2.0.3",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
     "rxjs": "~7.8.0",
