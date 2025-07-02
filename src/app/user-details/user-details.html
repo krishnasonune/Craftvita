@@ -1,0 +1,271 @@
+<section>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="container mt-4">
+
+    <!-- Full Name -->
+    <div class="mb-4">
+      <label class="form-label fs-4 fw-bold">Full Name</label>
+      <input formControlName="full_name" class="form-control fs-5">
+    </div>
+
+    <!-- About Me -->
+    <div class="mb-4">
+      <label class="form-label fs-4 fw-bold">About Me</label>
+      <textarea formControlName="about_me" rows="4" class="form-control fs-5"></textarea>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="mb-4">
+      <label class="form-label fs-4 fw-bold">Technical Skills</label>
+      <input type="text" formControlName="technical_skills" class="form-control fs-5"
+        placeholder="e.g. Angular, .NET, SQL Server" />
+    </div>
+
+    <!-- Contact Information -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">Location</label>
+        <input formControlName="location" class="form-control fs-5" placeholder="City, State" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">Phone</label>
+        <input formControlName="phone" class="form-control fs-5" placeholder="+91..." />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">Portfolio URL</label>
+        <input formControlName="portfolio" class="form-control fs-5" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">Gmail</label>
+        <input formControlName="gmail" class="form-control fs-5" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">GitHub</label>
+        <input formControlName="github" class="form-control fs-5" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">StackOverflow</label>
+        <input formControlName="stackoverflow" class="form-control fs-5" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fs-4 fw-bold">LinkedIn</label>
+        <input formControlName="linkedin" class="form-control fs-5" />
+      </div>
+    </div>
+
+    <!-- Experiences -->
+    <div class="mb-5">
+      <h4 class="mb-3">Experiences</h4>
+      <div class="row g-3">
+        <div class="border rounded p-3 mb-3">
+          <div formArrayName="experience" *ngFor="let ex of experiences.controls; let i = index">
+            <div [formGroupName]="i">
+              <div class="mb-2">
+                <label class="form-label fs-4 fw-bold">Company Name</label>
+                <input class="form-control fs-5" formControlName="comp_name" />
+              </div>
+              <div class="mb-2">
+                <label class="form-label fs-4 fw-bold">Designation</label>
+                <input class="form-control fs-5" formControlName="designation" />
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <label class="form-label fs-4 fw-bold">Start Date</label>
+                  <input class="form-control fs-5" formControlName="start_date" />
+                </div>
+                <div class="col">
+                  <label class="form-label fs-4 fw-bold">End Date</label>
+                  <input class="form-control fs-5" formControlName="end_date" />
+                </div>
+
+              </div>
+
+              <label class="form-label fs-4 fw-bold">Description</label>
+              <i class="bi bi-plus-circle fs-2 p-3" (click)="addPoint(i)"></i>
+              <div formArrayName="description">
+
+                <div>
+                  <span *ngFor="let des of descriptions(i).controls; let j = index">
+                    <input class="form-control fs-5 mb-3" type="text" formControlName="{{j}}">
+                    <i class="bi bi-trash3-fill fs-2" (click)="removePoint(i, j)"></i>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <button class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeExperience(i)">Remove</button>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add Experience</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="mb-5">
+      <h4 class="mb-3">Projects</h4>
+
+      <div class="border rounded p-3 mb-3">
+
+        <div formArrayName="project" *ngFor="let proj of projects.controls; let i = index">
+          <div [formGroupName]="i">
+            <div class="mb-2">
+              <label class="form-label fs-4 fw-bold">Title</label>
+              <input formControlName="title" class="form-control fs-5" />
+            </div>
+            <div class="mb-2">
+              <label class="form-label fs-4 fw-bold">Technologies (comma-separated)</label>
+              <input formControlName="technologies" class="form-control fs-5" />
+            </div>
+            <div class="mb-2">
+              <label class="form-label fs-4 fw-bold">Description</label>
+              <input formControlName="description" class="form-control fs-5" />
+            </div>
+            <div class="mb-2">
+              <label class="form-label fs-4 fw-bold">Link</label>
+              <input formControlName="link" class="form-control fs-5" />
+            </div>
+          </div>
+
+          <button class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeProject(i)">Remove</button>
+        </div>
+
+        <div class="text-end">
+          <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addProject()">Add Project</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="mb-5">
+      <h4 class="mb-3">Educations</h4>
+      <div class="row g-3">
+        <div class="border rounded p-3 mb-3">
+
+          <div formArrayName="degree" *ngFor="let degree of degrees.controls; let i = index">
+            <div [formGroupName]="i" class="mb-4 p-3 rounded">
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="form-label fs-4 fw-bold">Degree</label>
+                  <input type="text" class="form-control fs-5" formControlName="degree" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fs-4 fw-bold">Institution</label>
+                  <input type="text" class="form-control fs-5" formControlName="institution" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fs-4 fw-bold">Start Date</label>
+                  <input type="text" class="form-control fs-5" formControlName="start_date" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fs-4 fw-bold">End Date</label>
+                  <input type="text" class="form-control fs-5" formControlName="end_date" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fs-4 fw-bold">Score</label>
+                  <input type="text" class="form-control fs-5" formControlName="score" />
+                </div>
+
+              </div>
+            </div>
+            <i class="bi bi-trash3-fill fs-2" (click)="removeDegree(i)"></i>
+          </div>
+
+          <div class="text-end">
+            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add Education</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- certifications -->
+    <div class="mb-5">
+      <h4 class="mb-3">Certifications</h4>
+      <div class="row g-3">
+        <div class="border rounded p-3 mb-3">
+          <div formArrayName="certification" *ngFor="let c of certifications.controls; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-md-6">
+                <label class="form-label fs-4 fw-bold">Title</label>
+                <input type="text" class="form-control fs-5" formControlName="title" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fs-4 fw-bold">Issuer</label>
+                <input type="text" class="form-control fs-5" formControlName="issuer" />
+              </div>
+            </div>
+            <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeCertificate(i)"></i>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add Certification</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="mb-5">
+      <h4 class="mb-3">Achievements</h4>
+      <div class="row g-3">
+        <div class="border rounded p-3 mb-3">
+
+          <div formArrayName="achievement" *ngFor="let ach of achievements.controls; let i = index">
+            <div [formGroupName]="i">
+              <div class="col-md-6">
+                <label class="form-label fs-4 fw-bold">Title</label>
+                <input type="text" class="form-control fs-5" formControlName="title" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fs-4 fw-bold">Description</label>
+                <input type="text" class="form-control fs-5" formControlName="description" />
+              </div>
+            </div>
+            <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeAchievement(i)"></i>
+          </div>
+
+          <div class="text-end">
+            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add Achievements</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Interests -->
+    <div class="mb-5">
+      <h4 class="mb-3">Interests</h4>
+      <div class="row g-3">
+        <div class="border rounded p-3 mb-3">
+
+          <div formArrayName="interest">
+            <label class="form-label fs-4 fw-bold">Title</label>
+            <div *ngFor="let interest of interests.controls; let i = index" class="mb-2">
+              <input type="text" class="form-control" [formControlName]="i" />
+              <i class="bi-trash3-fill fs-2" (click)="removeInterest(i)"></i>
+            </div>
+          </div>
+
+          <div class="text-end">
+            <button class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add Interests</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg fs-4" [disabled]="!profileForm.valid">Save Profile</button>
+    </div>
+  </form>
+
+</section>
