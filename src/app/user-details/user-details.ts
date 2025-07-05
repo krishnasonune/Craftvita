@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 })
 export class UserDetails {
   profileForm!: FormGroup;
-  constructor(private fb: FormBuilder, private service : ServiceService,
-    private router : Router
+  constructor(private fb: FormBuilder, private service: ServiceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class UserDetails {
 
   initializeForm() {
     this.profileForm = this.fb.group({
-      full_name : [''],
+      full_name: [''],
       about_me: [''],
       technical_skills: [''],
       location: [''],
@@ -56,7 +56,7 @@ export class UserDetails {
 
   //#region Experience Functions
   addExperience() {
-    this.experiences.push(this.createAddExperienceFormGroupInstance());
+    this.experiences.insert(0, this.createAddExperienceFormGroupInstance());
   }
 
   removeExperience(i: any) {
@@ -67,12 +67,12 @@ export class UserDetails {
 
   createAddExperienceFormGroupInstance() {
     return this.fb.group({
-      comp_name: new FormControl(['']),
-      designation: new FormControl(['']),
-      start_date: new FormControl(['']),
-      end_date: new FormControl(['']),
-      description : new FormArray([
-        new FormControl([''])
+      comp_name: new FormControl([null]),
+      designation: new FormControl([null]),
+      start_date: new FormControl([null]),
+      end_date: new FormControl([null]),
+      description: new FormArray([
+        new FormControl([null])
       ])
     })
   }
@@ -80,11 +80,11 @@ export class UserDetails {
   get experiences() { return this.profileForm.get('experience') as FormArray; }
   descriptions(i: any) { return this.experiences.at(i).get('description') as FormArray; }
 
-  addPoint(i:any){
+  addPoint(i: any) {
     this.descriptions(i).push(new FormControl(['']))
   }
 
-  removePoint(i:any, j:any){
+  removePoint(i: any, j: any) {
     if (this.descriptions(i).length > 1) {
       this.descriptions(i).removeAt(j);
     }
@@ -93,16 +93,16 @@ export class UserDetails {
 
   //#region Projects Fucntions
   addProject() {
-    this.projects.push(this.createProjectFormGroupInstance());
+    this.projects.insert(0, this.createProjectFormGroupInstance());
   }
 
-  removeProject(i:any){
+  removeProject(i: any) {
     if (this.projects.length > 1) {
       this.projects.removeAt(i);
     }
   }
 
-  createProjectFormGroupInstance(){
+  createProjectFormGroupInstance() {
     return this.fb.group({
       title: [''],
       technologies: [''],
@@ -112,9 +112,9 @@ export class UserDetails {
   }
 
   get projects() { return this.profileForm.get('project') as FormArray; }
- 
+
   //#endregion
-  
+
   //#region Degree Function
   createDegreeInstance() {
     return this.fb.group({
@@ -126,19 +126,19 @@ export class UserDetails {
     });
   }
 
-  addDegree(){
-    this.degrees.push(this.createDegreeInstance());
+  addDegree() {
+    this.degrees.insert(0, this.createDegreeInstance());
   }
 
-  removeDegree(i:any){
+  removeDegree(i: any) {
     if (this.degrees.length > 1) {
       this.degrees.removeAt(i);
     }
   }
 
-  get degrees() {return this.profileForm.get('degree') as FormArray;}
+  get degrees() { return this.profileForm.get('degree') as FormArray; }
   //#endregion
-  
+
   //#region certification functions
   createCertification() {
     return this.fb.group({
@@ -147,19 +147,19 @@ export class UserDetails {
     });
   }
 
-  addCertificate(){
-    this.certifications.push(this.createCertification());
+  addCertificate() {
+    this.certifications.insert(0, this.createCertification());
   }
 
-  removeCertificate(i:any){
+  removeCertificate(i: any) {
     if (this.certifications.length > 1) {
       this.certifications.removeAt(i);
     }
   }
 
-  get certifications() {return this.profileForm.get('certification') as FormArray;}
+  get certifications() { return this.profileForm.get('certification') as FormArray; }
   //#endregion
-  
+
   //#region Achievements function
   createAchievement() {
     return this.fb.group({
@@ -168,39 +168,39 @@ export class UserDetails {
     });
   }
 
-  addAchievement(){
-    this.achievements.push(this.createAchievement());
+  addAchievement() {
+    this.achievements.insert(0, this.createAchievement());
   }
 
-  removeAchievement(i:any){
+  removeAchievement(i: any) {
     if (this.achievements.length > 1) {
       this.achievements.removeAt(i);
     }
   }
 
-  get achievements() {return this.profileForm.get('achievement') as FormArray;}
+  get achievements() { return this.profileForm.get('achievement') as FormArray; }
   //#endregion
-  
+
   //#region Interests
-  createInterestsInstance(){
-    return new FormControl(['']);
+  createInterestsInstance() {
+    return new FormControl([null]);
   }
 
-  addInterets(){
-    this.interests.push(this.createInterestsInstance())
+  addInterets() {
+    this.interests.insert(0, this.createInterestsInstance())
   }
 
-  removeInterest(i:any){
+  removeInterest(i: any) {
     if (this.interests.length > 1) {
       this.interests.removeAt(i)
     }
   }
 
-  get interests() { return this.profileForm.get('interest') as FormArray}
+  get interests() { return this.profileForm.get('interest') as FormArray }
   //#endregion
 
   onSubmit() {
-    let profile : ProfileDTO = this.profileForm.value;
+    let profile: ProfileDTO = this.profileForm.value;
     console.log(profile)
 
     this.service.setProfile(profile);

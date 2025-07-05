@@ -46,14 +46,14 @@ export class ClassicTemplate {
     this.location = this.userProfile?.location != null ? this.userProfile?.location : '';
     this.phone = this.userProfile?.phone != null ? this.userProfile?.phone : '',
     this.portfolio = this.userProfile?.portfolio != null ? this.userProfile?.portfolio : '',
-    this.gmail = this.userProfile?.gmail != null ? 'mailto:'+this.userProfile?.gmail : '',
+    this.gmail = this.userProfile?.gmail != null ? this.userProfile?.gmail : '',
     this.github = this.userProfile?.github != null ? this.userProfile?.github : '',
     this.stackoverflow = this.userProfile?.stackoverflow != null ? this.userProfile?.stackoverflow : '',
     this.linkedin = this.userProfile?.linkedin != null ? this.userProfile?.linkedin : '',
 
     this.about_me = this.userProfile?.about_me != null ? this.userProfile.about_me : '';
 
-    this.experiences = this.userProfile?.experience?.length != null ? this.userProfile?.experience : [];
+    this.experiences = this.userProfile?.experience != null ? this.userProfile?.experience : [];
 
     this.projects = this.userProfile?.project != null ? this.userProfile?.project : [];
 
