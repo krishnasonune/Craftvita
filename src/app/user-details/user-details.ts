@@ -23,13 +23,13 @@ export class UserDetails {
 
   initializeForm() {
     this.profileForm = this.fb.group({
-      full_name: [''],
+      full_name: ['', Validators.required],
       about_me: [''],
       technical_skills: [''],
-      location: [''],
+      location: ['', Validators.required],
       phone: [''],
       portfolio: [''],
-      gmail: [''],
+      gmail: ['', Validators.required],
       github: [''],
       stackoverflow: [''],
       linkedin: [''],
@@ -56,7 +56,7 @@ export class UserDetails {
 
   //#region Experience Functions
   addExperience() {
-    this.experiences.insert(0, this.createAddExperienceFormGroupInstance());
+    this.experiences.push(this.createAddExperienceFormGroupInstance());
   }
 
   removeExperience(i: any) {
@@ -93,7 +93,7 @@ export class UserDetails {
 
   //#region Projects Fucntions
   addProject() {
-    this.projects.insert(0, this.createProjectFormGroupInstance());
+    this.projects.push(this.createProjectFormGroupInstance());
   }
 
   removeProject(i: any) {
@@ -104,10 +104,10 @@ export class UserDetails {
 
   createProjectFormGroupInstance() {
     return this.fb.group({
-      title: [''],
-      technologies: [''],
-      description: [''],
-      link: ['']
+      title: new FormControl([null]),
+      technologies: new FormControl([null]),
+      description: new FormControl([null]),
+      link: new FormControl([null])
     })
   }
 
@@ -118,16 +118,17 @@ export class UserDetails {
   //#region Degree Function
   createDegreeInstance() {
     return this.fb.group({
-      degree: [''],
-      institution: [''],
-      start_date: [''],
-      end_date: [''],
-      score: ['']
+      degree: new FormControl([null]),
+      institution: new FormControl([null]),
+      start_date: new FormControl([null]),
+      end_date: new FormControl([null]),
+      score: new FormControl([null])
     });
   }
 
   addDegree() {
-    this.degrees.insert(0, this.createDegreeInstance());
+    this.degrees.push(
+      this.createDegreeInstance());
   }
 
   removeDegree(i: any) {
@@ -142,8 +143,8 @@ export class UserDetails {
   //#region certification functions
   createCertification() {
     return this.fb.group({
-      title: [''],
-      issuer: ['']
+      title: new FormControl([null]),
+      issuer: new FormControl([null])
     });
   }
 
@@ -163,8 +164,8 @@ export class UserDetails {
   //#region Achievements function
   createAchievement() {
     return this.fb.group({
-      title: [''],
-      description: ['']
+      title: new FormControl([null]),
+      description: new FormControl([null])
     });
   }
 

@@ -1,7 +1,7 @@
 export interface IEducation {
     degree: string;
     institution: string;
-    score?: string; // CGPA, percentage, or grade (optional)
+    score?: string;
     start_date: string;
     end_date: string;
 }

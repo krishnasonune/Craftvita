@@ -1,16 +1,19 @@
 <section>
+  <h1 class="fw-bold text-center p-4">Resume Builder</h1>
+
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="container mt-4">
 
     <!-- Full Name -->
     <div class="mb-4">
-      <label class="form-label fs-4 fw-bold">Full Name</label>
+      <label class="form-label fs-4 fw-bold required">Full Name</label>
       <input formControlName="full_name" class="form-control fs-5" placeholder="enter name ( camel case )">
     </div>
 
     <!-- About Me -->
     <div class="mb-4">
       <label class="form-label fs-4 fw-bold">About Me</label>
-      <textarea formControlName="about_me" rows="4" class="form-control fs-5" placeholder="enter description"></textarea>
+      <textarea formControlName="about_me" rows="4" class="form-control fs-5"
+        placeholder="enter description"></textarea>
     </div>
 
     <!-- Technical Skills -->
@@ -23,11 +26,11 @@
     <!-- Contact Information -->
     <div class="row g-3 mb-4">
       <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">Location</label>
+        <label class="form-label fs-4 fw-bold required">Location</label>
         <input formControlName="location" class="form-control fs-5" placeholder="City, State" />
       </div>
       <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">Phone</label>
+        <label class="form-label fs-4 fw-bold required">Phone</label>
         <input formControlName="phone" class="form-control fs-5" placeholder="+91..." />
       </div>
       <div class="col-md-4">
@@ -35,7 +38,7 @@
         <input formControlName="portfolio" class="form-control fs-5" placeholder="https://" />
       </div>
       <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">Gmail</label>
+        <label class="form-label fs-4 fw-bold required">Gmail</label>
         <input formControlName="gmail" class="form-control fs-5" placeholder="https://" />
       </div>
       <div class="col-md-4">
@@ -95,7 +98,8 @@
             <button type="button" class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeExperience(i)">Remove</button>
           </div>
           <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add Experience</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add
+              Experience</button>
           </div>
 
         </div>
@@ -104,7 +108,7 @@
 
     <!-- Projects -->
     <div class="mb-5">
-      <h4 class="mb-3">Projects</h4>
+      <h4 class="mb-3 required">Projects</h4>
 
       <div class="border rounded p-3 mb-3">
 
@@ -128,7 +132,7 @@
             </div>
           </div>
 
-          <button class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeProject(i)">Remove</button>
+          <button type="button" class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeProject(i)">Remove</button>
         </div>
 
         <div class="text-end">
@@ -139,7 +143,7 @@
 
     <!-- Education -->
     <div class="mb-5">
-      <h4 class="mb-3">Educations</h4>
+      <h4 class="mb-3 required">Educations</h4>
       <div class="row g-3">
         <div class="border rounded p-3 mb-3">
 
@@ -154,7 +158,8 @@
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">Institution</label>
-                  <input type="text" class="form-control fs-5" formControlName="institution" placeholder="Mumbai University" />
+                  <input type="text" class="form-control fs-5" formControlName="institution"
+                    placeholder="Mumbai University" />
                 </div>
 
                 <div class="col-md-6">
@@ -164,13 +169,14 @@
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">End Date</label>
-                  <input type="text" class="form-control fs-5" formControlName="end_date" placeholder="Jul 2021 / Present" />
+                  <input type="text" class="form-control fs-5" formControlName="end_date"
+                    placeholder="Jul 2021 / Present" />
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label fs-4 fw-bold">Score</label>
                   <input type="text" class="form-control fs-5" formControlName="score"
-                  placeholder="CGPA, percentage etc" />
+                    placeholder="CGPA, percentage etc" />
                 </div>
 
               </div>
@@ -179,7 +185,8 @@
           </div>
 
           <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add Education</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add
+              Education</button>
           </div>
 
         </div>
@@ -205,7 +212,8 @@
             <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeCertificate(i)"></i>
           </div>
           <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add Certification</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add
+              Certification</button>
           </div>
 
         </div>
@@ -226,14 +234,16 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label fs-4 fw-bold">Description</label>
-                <input type="text" class="form-control fs-5" formControlName="description" placeholder="5 star Problem solving skill hacker rank" />
+                <input type="text" class="form-control fs-5" formControlName="description"
+                  placeholder="5 star Problem solving skill hacker rank" />
               </div>
             </div>
             <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeAchievement(i)"></i>
           </div>
 
           <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add Achievements</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add
+              Achievements</button>
           </div>
 
         </div>
@@ -249,13 +259,15 @@
           <div formArrayName="interest">
             <label class="form-label fs-4 fw-bold">Title</label>
             <div *ngFor="let interest of interests.controls; let i = index" class="mb-2">
-              <input type="text" class="form-control" [formControlName]="i" placeholder="solving rubik's cube, coding etc" />
+              <input type="text" class="form-control" [formControlName]="i"
+                placeholder="solving rubik's cube, coding etc" />
               <i class="bi-trash3-fill fs-2" (click)="removeInterest(i)"></i>
             </div>
           </div>
 
           <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add Interests</button>
+            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add
+              Interests</button>
           </div>
 
         </div>
@@ -268,5 +280,4 @@
       <button type="submit" class="btn btn-primary btn-lg fs-4" [disabled]="!profileForm.valid">Save Profile</button>
     </div>
   </form>
-
 </section>
