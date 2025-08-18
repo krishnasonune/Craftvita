@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: ['master']
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,9 +15,8 @@ jobs:
         node-version: [22.x]
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -36,4 +32,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/portfolio 
+          folder: dist/resumebuilder 
