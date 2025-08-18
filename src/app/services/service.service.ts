@@ -9,16 +9,16 @@ export class ServiceService {
   profile !: ProfileDTO;
   constructor() { }
 
-  getProfile(){
+  getProfile() {
     return this.profile;
   }
 
-  setProfile(newProfile : ProfileDTO){
+  setProfile(newProfile: ProfileDTO) {
     this.profile = newProfile;
     return this.profile;
   }
 
-  clearProfile(){
+  clearProfile() {
     this.profile = {};
     return this.profile;
   }
