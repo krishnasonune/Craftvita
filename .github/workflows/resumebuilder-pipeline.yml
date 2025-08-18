@@ -28,6 +28,6 @@ jobs:
 
       - name: 🔨 Build Angular app
         run: npm run ghbuild
-
-      - name: deploy to ghpages
-        run: npm run ghpublish
+      
+      - name: Deploy to GitHub Pages
+        run: ngh --dir=dist/resumebuilder --no-silent --repo=https://x-access-token:${{ secrets.CICD_TOKEN }}@github.com/krishnasonune/resumebuilder.git --name="GitHub Actions" --email="actions@github.com"
