@@ -29,11 +29,11 @@ jobs:
       - name: Installing Modules
         run: npm install --legacy-peer-deps
 
-      - name: Installing CLI Pages
-        run: npm install -g angular-cli-ghpages
-
       - name: 🔨 Build Angular app
         run: npm run ghbuild
       
-      - name: Deploy to GitHub Pages
-        run: ngh --dir dist/resumebuilder --no-silent --repo=https://x-access-token:${{ secrets.CICD_TOKEN }}@github.com/krishnasonune/resumebuilder.git --name="GitHub Actions" --email="actions@github.com" --branch=gh-pages
+      - name: 🚀 Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist/portfolio 
