@@ -1,4 +1,4 @@
-name: Resume Builder Pipeline
+name: Craftvita Pipeline
 
 on:
   push:
