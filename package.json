@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "ghbuild": "ng build --configuration production --base-href 'https://krishnasonune.github.io/Craftvita'",
-    "ghpublish": "ngh --dir dist/resumebuilder"
+    "ghpublish": "ngh --dir dist/Craftvita"
   },
   "private": true,
   "dependencies": {
