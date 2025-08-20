@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "ghbuild": "ng build --configuration production --base-href 'https://krishnasonune.github.io/Craftvita'",
+    "ghbuild": "ng build --configuration production --base-href '/Craftvita/'",
     "ghpublish": "ngh --dir dist/Craftvita"
   },
   "private": true,
