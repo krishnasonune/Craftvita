@@ -3,277 +3,401 @@
 
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="container mt-4">
 
-    <!-- Full Name -->
-    <div class="mb-4">
-      <label class="form-label fs-4 fw-bold required">Full Name</label>
-      <input formControlName="full_name" class="form-control fs-5" placeholder="enter name ( camel case )">
-    </div>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <!-- Basic Details -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <h2>Basic Details</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
 
-    <!-- About Me -->
-    <div class="mb-4">
-      <label class="form-label fs-4 fw-bold">About Me</label>
-      <textarea formControlName="about_me" rows="4" class="form-control fs-5"
-        placeholder="enter description"></textarea>
-    </div>
-
-    <!-- Technical Skills -->
-    <div class="mb-4">
-      <label class="form-label fs-4 fw-bold">Technical Skills</label>
-      <input type="text" formControlName="technical_skills" class="form-control fs-5"
-        placeholder="e.g. Angular, .NET, SQL Server" />
-    </div>
-
-    <!-- Contact Information -->
-    <div class="row g-3 mb-4">
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold required">Location</label>
-        <input formControlName="location" class="form-control fs-5" placeholder="City, State" />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold required">Phone</label>
-        <input formControlName="phone" class="form-control fs-5" placeholder="+91..." />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">Portfolio URL</label>
-        <input formControlName="portfolio" class="form-control fs-5" placeholder="https://" />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold required">Gmail</label>
-        <input formControlName="gmail" class="form-control fs-5" placeholder="https://" />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">GitHub</label>
-        <input formControlName="github" class="form-control fs-5" placeholder="https://" />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">StackOverflow</label>
-        <input formControlName="stackoverflow" class="form-control fs-5" placeholder="https://" />
-      </div>
-      <div class="col-md-4">
-        <label class="form-label fs-4 fw-bold">LinkedIn</label>
-        <input formControlName="linkedin" class="form-control fs-5" placeholder="https://" />
-      </div>
-    </div>
-
-    <!-- Experiences -->
-    <div class="mb-5">
-      <h4 class="mb-3">Experiences</h4>
-      <div class="row g-3">
-        <div class="border rounded p-3 mb-3">
-          <div formArrayName="experience" *ngFor="let ex of experiences.controls; let i = index">
-            <div [formGroupName]="i">
-              <div class="mb-2">
-                <label class="form-label fs-4 fw-bold">Company Name</label>
-                <input class="form-control fs-5" formControlName="comp_name" placeholder="enter company name" />
-              </div>
-              <div class="mb-2">
-                <label class="form-label fs-4 fw-bold">Designation</label>
-                <input class="form-control fs-5" formControlName="designation" placeholder="enter designation" />
-              </div>
-              <div class="row mb-2">
-                <div class="col">
-                  <label class="form-label fs-4 fw-bold">Start Date</label>
-                  <input class="form-control fs-5" formControlName="start_date" placeholder="Jan 2020" />
-                </div>
-                <div class="col">
-                  <label class="form-label fs-4 fw-bold">End Date</label>
-                  <input class="form-control fs-5" formControlName="end_date" placeholder="Jul 2023 / Present" />
-                </div>
-
-              </div>
-
-              <label class="form-label fs-4 fw-bold">Description</label>
-              <i class="bi bi-plus-circle fs-2 p-3" (click)="addPoint(i)"></i>
-              <div formArrayName="description">
-
-                <div>
-                  <span *ngFor="let des of descriptions(i).controls; let j = index">
-                    <input class="form-control fs-5 mb-3" type="text" formControlName="{{j}}" placeholder="enter point">
-                    <i class="bi bi-trash3-fill fs-2" (click)="removePoint(i, j)"></i>
-                  </span>
-                </div>
-              </div>
-
+            <!-- Full Name -->
+            <div class="mb-4">
+              <label class="form-label fs-4 fw-bold required">Full Name</label>
+              <input formControlName="full_name" class="form-control fs-5" placeholder="enter name ( camel case )">
             </div>
-            <button type="button" class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeExperience(i)">Remove</button>
-          </div>
-          <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add
-              Experience</button>
-          </div>
 
+            <!-- About Me -->
+            <div class="mb-4">
+              <label class="form-label fs-4 fw-bold">About Me</label>
+              <textarea formControlName="about_me" rows="4" class="form-control fs-5"
+                placeholder="enter description"></textarea>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="row g-3 mb-4">
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold required">Location</label>
+                <input formControlName="location" class="form-control fs-5" placeholder="City, State" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold required">Phone</label>
+                <input formControlName="phone" class="form-control fs-5" placeholder="+91..." />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold">Portfolio URL</label>
+                <input formControlName="portfolio" class="form-control fs-5" placeholder="https://" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold required">Gmail</label>
+                <input formControlName="gmail" class="form-control fs-5" placeholder="https://" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold">GitHub</label>
+                <input formControlName="github" class="form-control fs-5" placeholder="https://" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold">StackOverflow</label>
+                <input formControlName="stackoverflow" class="form-control fs-5" placeholder="https://" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-4 fw-bold">LinkedIn</label>
+                <input formControlName="linkedin" class="form-control fs-5" placeholder="https://" />
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Projects -->
-    <div class="mb-5">
-      <h4 class="mb-3 required">Projects</h4>
-
-      <div class="border rounded p-3 mb-3">
-
-        <div formArrayName="project" *ngFor="let proj of projects.controls; let i = index">
-          <div [formGroupName]="i">
-            <div class="mb-2">
-              <label class="form-label fs-4 fw-bold">Title</label>
-              <input formControlName="title" class="form-control fs-5" placeholder="enter title" />
-            </div>
-            <div class="mb-2">
-              <label class="form-label fs-4 fw-bold">Technologies (comma-separated)</label>
-              <input formControlName="technologies" class="form-control fs-5" placeholder="eg. Angular, .NET etc" />
-            </div>
-            <div class="mb-2">
-              <label class="form-label fs-4 fw-bold">Description</label>
-              <input formControlName="description" class="form-control fs-5" placeholder="enter description" />
-            </div>
-            <div class="mb-2">
-              <label class="form-label fs-4 fw-bold">Link</label>
-              <input formControlName="link" class="form-control fs-5" placeholder="https://" />
+      <!-- Technical Skills -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <h2>Technical Skills</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Technical Skills -->
+            <div class="mb-4">
+              <label class="form-label fs-4 fw-bold">Technical Skills</label>
+              <input type="text" formControlName="technical_skills" class="form-control fs-5"
+                placeholder="e.g. Angular, .NET, SQL Server" />
             </div>
           </div>
-
-          <button type="button" class="btn btn-lg btn-danger fs-4 mt-4" (click)="removeProject(i)">Remove</button>
-        </div>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addProject()">Add Project</button>
         </div>
       </div>
-    </div>
 
-    <!-- Education -->
-    <div class="mb-5">
-      <h4 class="mb-3 required">Educations</h4>
-      <div class="row g-3">
-        <div class="border rounded p-3 mb-3">
-
-          <div formArrayName="degree" *ngFor="let degree of degrees.controls; let i = index">
-            <div [formGroupName]="i" class="mb-4 p-3 rounded">
+      <!-- Experiences -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <h2>Experiences</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Experiences -->
+            <div class="mb-5">
+              <h4 class="mb-3">Experiences</h4>
               <div class="row g-3">
+                <div class="border rounded p-3 mb-3">
+                  <div formArrayName="experience" *ngFor="let ex of experiences.controls; let i = index">
+                    <div [formGroupName]="i">
+                      <div class="mb-2">
+                        <label class="form-label fs-4 fw-bold">Company Name</label>
+                        <input class="form-control fs-5" formControlName="comp_name" placeholder="enter company name" />
+                      </div>
+                      <div class="mb-2">
+                        <label class="form-label fs-4 fw-bold">Designation</label>
+                        <input class="form-control fs-5" formControlName="designation"
+                          placeholder="enter designation" />
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col">
+                          <label class="form-label fs-4 fw-bold">Start Date</label>
+                          <input class="form-control fs-5" formControlName="start_date" placeholder="Jan 2020" />
+                        </div>
+                        <div class="col">
+                          <label class="form-label fs-4 fw-bold">End Date</label>
+                          <input class="form-control fs-5" formControlName="end_date"
+                            placeholder="Jul 2023 / Present" />
+                        </div>
 
-                <div class="col-md-6">
-                  <label class="form-label fs-4 fw-bold">Degree</label>
-                  <input type="text" class="form-control fs-5" formControlName="degree" placeholder="MCA, B.Sc" />
+                      </div>
+
+                      <label class="form-label fs-4 fw-bold">Description</label>
+                      <i class="bi bi-plus-circle fs-2 p-3" (click)="addPoint(i)"></i>
+                      <div formArrayName="description">
+
+                        <div>
+                          <span *ngFor="let des of descriptions(i).controls; let j = index">
+                            <input class="form-control fs-5 mb-3" type="text" formControlName="{{j}}"
+                              placeholder="enter point">
+                            <i class="bi bi-trash3-fill fs-2" (click)="removePoint(i, j)"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                    </div>
+                    <button type="button" class="btn btn-lg btn-danger fs-4 mt-4"
+                      (click)="removeExperience(i)">Remove</button>
+                  </div>
+                  <div class="text-end">
+                    <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addExperience()">Add
+                      Experience</button>
+                  </div>
+
                 </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fs-4 fw-bold">Institution</label>
-                  <input type="text" class="form-control fs-5" formControlName="institution"
-                    placeholder="Mumbai University" />
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fs-4 fw-bold">Start Date</label>
-                  <input type="text" class="form-control fs-5" formControlName="start_date" placeholder="Jan 2018" />
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fs-4 fw-bold">End Date</label>
-                  <input type="text" class="form-control fs-5" formControlName="end_date"
-                    placeholder="Jul 2021 / Present" />
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fs-4 fw-bold">Score</label>
-                  <input type="text" class="form-control fs-5" formControlName="score"
-                    placeholder="CGPA, percentage etc" />
-                </div>
-
               </div>
             </div>
-            <i class="bi bi-trash3-fill fs-2" (click)="removeDegree(i)"></i>
           </div>
+        </div>
+      </div>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add
-              Education</button>
+      <!-- Projects -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <h2>Projects</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Projects -->
+            <div class="mb-5">
+              <h4 class="mb-3 required">Projects</h4>
+
+              <div class="border rounded p-3 mb-3">
+
+                <div formArrayName="project" *ngFor="let proj of projects.controls; let i = index">
+                  <div [formGroupName]="i">
+                    <div class="mb-2">
+                      <label class="form-label fs-4 fw-bold">Title</label>
+                      <input formControlName="title" class="form-control fs-5" placeholder="enter title" />
+                    </div>
+                    <div class="mb-2">
+                      <label class="form-label fs-4 fw-bold">Technologies (comma-separated)</label>
+                      <input formControlName="technologies" class="form-control fs-5"
+                        placeholder="eg. Angular, .NET etc" />
+                    </div>
+                    <div class="mb-2">
+                      <label class="form-label fs-4 fw-bold">Description</label>
+                      <input formControlName="description" class="form-control fs-5" placeholder="enter description" />
+                    </div>
+                    <div class="mb-2">
+                      <label class="form-label fs-4 fw-bold">Link</label>
+                      <input formControlName="link" class="form-control fs-5" placeholder="https://" />
+                    </div>
+                  </div>
+
+                  <button type="button" class="btn btn-lg btn-danger fs-4 mt-4"
+                    (click)="removeProject(i)">Remove</button>
+                </div>
+
+                <div class="text-end">
+                  <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addProject()">Add
+                    Project</button>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
 
+      <!-- Education -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            <h2>Education</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Education -->
+            <div class="mb-5">
+              <h4 class="mb-3 required">Educations</h4>
+              <div class="row g-3">
+                <div class="border rounded p-3 mb-3">
+
+                  <div formArrayName="degree" *ngFor="let degree of degrees.controls; let i = index">
+                    <div [formGroupName]="i" class="mb-4 p-3 rounded">
+                      <div class="row g-3">
+
+                        <div class="col-md-6">
+                          <label class="form-label fs-4 fw-bold">Degree</label>
+                          <input type="text" class="form-control fs-5" formControlName="degree"
+                            placeholder="MCA, B.Sc" />
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label fs-4 fw-bold">Institution</label>
+                          <input type="text" class="form-control fs-5" formControlName="institution"
+                            placeholder="Mumbai University" />
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label fs-4 fw-bold">Start Date</label>
+                          <input type="text" class="form-control fs-5" formControlName="start_date"
+                            placeholder="Jan 2018" />
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label fs-4 fw-bold">End Date</label>
+                          <input type="text" class="form-control fs-5" formControlName="end_date"
+                            placeholder="Jul 2021 / Present" />
+                        </div>
+
+                        <div class="col-md-6">
+                          <label class="form-label fs-4 fw-bold">Score</label>
+                          <input type="text" class="form-control fs-5" formControlName="score"
+                            placeholder="CGPA, percentage etc" />
+                        </div>
+
+                      </div>
+                    </div>
+                    <i class="bi bi-trash3-fill fs-2" (click)="removeDegree(i)"></i>
+                  </div>
+
+                  <div class="text-end">
+                    <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addDegree()">Add
+                      Education</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- certifications -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+            <h2>Certifications</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- certifications -->
+            <div class="mb-5">
+              <h4 class="mb-3">Certifications</h4>
+              <div class="row g-3">
+                <div class="border rounded p-3 mb-3">
+                  <div formArrayName="certification" *ngFor="let c of certifications.controls; let i = index">
+                    <div [formGroupName]="i">
+                      <div class="col-md-6">
+                        <label class="form-label fs-4 fw-bold">Title</label>
+                        <input type="text" class="form-control fs-5" formControlName="title"
+                          placeholder="MongoDB, Docker" />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fs-4 fw-bold">Issuer</label>
+                        <input type="text" class="form-control fs-5" formControlName="issuer"
+                          placeholder="Udemy, Coursera" />
+                      </div>
+                    </div>
+                    <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeCertificate(i)"></i>
+                  </div>
+                  <div class="text-end">
+                    <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add
+                      Certification</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingSeven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+            <h2>Achievements</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Achievements -->
+            <div class="mb-5">
+              <h4 class="mb-3">Achievements</h4>
+              <div class="row g-3">
+                <div class="border rounded p-3 mb-3">
+
+                  <div formArrayName="achievement" *ngFor="let ach of achievements.controls; let i = index">
+                    <div [formGroupName]="i">
+                      <div class="col-md-6">
+                        <label class="form-label fs-4 fw-bold">Title</label>
+                        <input type="text" class="form-control fs-5" formControlName="title"
+                          placeholder="Problem solving" />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fs-4 fw-bold">Description</label>
+                        <input type="text" class="form-control fs-5" formControlName="description"
+                          placeholder="5 star Problem solving skill hacker rank" />
+                      </div>
+                    </div>
+                    <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeAchievement(i)"></i>
+                  </div>
+
+                  <div class="text-end">
+                    <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add
+                      Achievements</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingEight">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+            <h2>Interests</h2>
+          </button>
+        </h2>
+        <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Interests -->
+            <div class="mb-5">
+              <h4 class="mb-3">Interests</h4>
+              <div class="row g-3">
+                <div class="border rounded p-3 mb-3">
+
+                  <div formArrayName="interest">
+                    <label class="form-label fs-4 fw-bold">Title</label>
+                    <div *ngFor="let interest of interests.controls; let i = index" class="mb-2">
+                      <input type="text" class="form-control" [formControlName]="i"
+                        placeholder="solving rubik's cube, coding etc" />
+                      <i class="bi-trash3-fill fs-2" (click)="removeInterest(i)"></i>
+                    </div>
+                  </div>
+
+                  <div class="text-end">
+                    <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add
+                      Interests</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- certifications -->
-    <div class="mb-5">
-      <h4 class="mb-3">Certifications</h4>
-      <div class="row g-3">
-        <div class="border rounded p-3 mb-3">
-          <div formArrayName="certification" *ngFor="let c of certifications.controls; let i = index">
-            <div [formGroupName]="i">
-              <div class="col-md-6">
-                <label class="form-label fs-4 fw-bold">Title</label>
-                <input type="text" class="form-control fs-5" formControlName="title" placeholder="MongoDB, Docker" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fs-4 fw-bold">Issuer</label>
-                <input type="text" class="form-control fs-5" formControlName="issuer" placeholder="Udemy, Coursera" />
-              </div>
-            </div>
-            <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeCertificate(i)"></i>
-          </div>
-          <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addCertificate()">Add
-              Certification</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Achievements -->
-    <div class="mb-5">
-      <h4 class="mb-3">Achievements</h4>
-      <div class="row g-3">
-        <div class="border rounded p-3 mb-3">
-
-          <div formArrayName="achievement" *ngFor="let ach of achievements.controls; let i = index">
-            <div [formGroupName]="i">
-              <div class="col-md-6">
-                <label class="form-label fs-4 fw-bold">Title</label>
-                <input type="text" class="form-control fs-5" formControlName="title" placeholder="Problem solving" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fs-4 fw-bold">Description</label>
-                <input type="text" class="form-control fs-5" formControlName="description"
-                  placeholder="5 star Problem solving skill hacker rank" />
-              </div>
-            </div>
-            <i class="bi bi-trash3-fill fs-2 pt-4" (click)="removeAchievement(i)"></i>
-          </div>
-
-          <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addAchievement()">Add
-              Achievements</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Interests -->
-    <div class="mb-5">
-      <h4 class="mb-3">Interests</h4>
-      <div class="row g-3">
-        <div class="border rounded p-3 mb-3">
-
-          <div formArrayName="interest">
-            <label class="form-label fs-4 fw-bold">Title</label>
-            <div *ngFor="let interest of interests.controls; let i = index" class="mb-2">
-              <input type="text" class="form-control" [formControlName]="i"
-                placeholder="solving rubik's cube, coding etc" />
-              <i class="bi-trash3-fill fs-2" (click)="removeInterest(i)"></i>
-            </div>
-          </div>
-
-          <div class="text-end">
-            <button type="button" class="btn btn-lg btn-primary fs-4 mt-4" (click)="addInterets()">Add
-              Interests</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
 
     <!-- Submit Button -->
     <div class="text-center">
