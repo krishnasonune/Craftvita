@@ -34,6 +34,82 @@ export class ClassicTemplate {
 
   constructor(private service: ServiceService) {
     this.userProfile = this.service.getProfile();
+    
+    // this.userProfile = {
+    //   "full_name": "name",
+    //   "about_me": "",
+    //   "technical_skills": "asdasdf,werqer, zxczxv",
+    //   "location": "mum",
+    //   "phone": "",
+    //   "portfolio": "",
+    //   "gmail": "abcd@gmail.com",
+    //   "github": "",
+    //   "stackoverflow": "",
+    //   "linkedin": "",
+    //   "experience": [
+    //       {
+    //           "comp_name": "comp1",
+    //           "designation": "designation",
+    //           "start_date": "jan 2016",
+    //           "end_date": "aug 2025",
+    //           "description": [
+    //               "description"
+    //           ]
+    //       }
+    //   ],
+    //   "project": [
+    //       {
+    //           "title": "proj1",
+    //           "technologies": "java, html",
+    //           "description": "proj1 desc1",
+    //           "link": ''
+    //       },
+    //       {
+    //           "title": "proj2",
+    //           "technologies": ".net angular",
+    //           "description": "proj2 desc",
+    //           "link": ''
+    //       }
+    //   ],
+    //   "degree": [
+    //       {
+    //           "degree": "BSC",
+    //           "institution": "mum",
+    //           "start_date": "june 2013",
+    //           "end_date": "june 2016",
+    //           "score": "5.0"
+    //       },
+    //       {
+    //           "degree": "MCA",
+    //           "institution": "mum",
+    //           "start_date": "june 2016",
+    //           "end_date": "june 2018",
+    //           "score": "5.0"
+    //       }
+    //   ],
+    //   "certification": [
+    //       {
+    //           "title": "cert2",
+    //           "issuer": "it-hub1"
+    //       },
+    //       {
+    //           "title": "cert1",
+    //           "issuer": "it-hub"
+    //       }
+    //   ],
+    //   "achievement": [
+    //       {
+    //           "title": "self learner angular",
+    //           "description": "achieve 1 desc"
+    //       }
+    //   ],
+    //   "interest": [
+    //       "playing indott games",
+    //       "playing outdoor games"
+    //   ]
+    // }
+    
+    console.log('this.userProfile', this.userProfile)
     this.getUserProfile();
   }
 
@@ -75,16 +151,35 @@ export class ClassicTemplate {
 
   //#region Null Checkers
   private isAllNullEntryExperience(entry: any): boolean {
-    const isCompNameNull = entry.comp_name?.every((val: any) => val === null);
-    const isDesignationNull = entry.designation?.every((val: any) => val === null);
-    const isStartDateNull = entry.start_date?.every((val: any) => val === null);
-    const isEndDateNull = entry.end_date?.every((val: any) => val === null);
-    const isDescriptionNull = entry.description?.every(
-      (descArray: any[]) => Array.isArray(descArray) && descArray.every((val: any) => val === null)
-    );
+    const isCompNameNull = Array.isArray(entry.comp_name)
+      ? entry.comp_name.every((val: any) => val === null)
+      : entry.comp_name === null;
 
-    return isCompNameNull && isDesignationNull && isStartDateNull && isEndDateNull && isDescriptionNull;
+    const isDesignationNull = Array.isArray(entry.designation)
+      ? entry.designation.every((val: any) => val === null)
+      : entry.designation === null;
+
+    const isStartDateNull = Array.isArray(entry.start_date)
+      ? entry.start_date.every((val: any) => val === null)
+      : entry.start_date === null;
+
+    const isEndDateNull = Array.isArray(entry.end_date)
+      ? entry.end_date.every((val: any) => val === null)
+      : entry.end_date === null;
+
+    const isDescriptionNull = Array.isArray(entry.description)
+      ? entry.description.every((val: any) => val === null)
+      : entry.description === null;
+
+    return (
+      isCompNameNull &&
+      isDesignationNull &&
+      isStartDateNull &&
+      isEndDateNull &&
+      isDescriptionNull
+    );
   }
+
 
   private isAllFieldsArrayOfNull(entry: Record<string, any>): boolean {
     for (const key in entry) {

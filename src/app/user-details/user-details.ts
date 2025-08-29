@@ -23,13 +23,13 @@ export class UserDetails {
 
   initializeForm() {
     this.profileForm = this.fb.group({
-      full_name: ['', Validators.required],
+      full_name: ['name', Validators.required],
       about_me: [''],
       technical_skills: [''],
-      location: ['', Validators.required],
+      location: ['mum', Validators.required],
       phone: [''],
       portfolio: [''],
-      gmail: ['', Validators.required],
+      gmail: ['abcd@gmail.com', Validators.required],
       github: [''],
       stackoverflow: [''],
       linkedin: [''],
@@ -202,7 +202,7 @@ export class UserDetails {
 
   onSubmit() {
     let profile: ProfileDTO = this.profileForm.value;
-    console.log(profile)
+    // console.log(profile)
 
     this.service.setProfile(profile);
     this.router.navigate(['/classic']);
