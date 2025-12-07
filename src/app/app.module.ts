@@ -6,13 +6,15 @@ import { ClassicTemplate } from './classic-template/classic-template';
 import { UserDetails } from './user-details/user-details';
 import { ReactiveFormsModule } from '@angular/forms';
 import { routing } from './routes/app-routes';
+import { SimplisticTemplateComponent } from './simplistic-template/simplistic-template.component';
 
 
 
 @NgModule({
   declarations: [AppComponent,
     ClassicTemplate,
-    UserDetails
+    UserDetails,
+    SimplisticTemplateComponent
   ],
   imports: [
     CommonModule,
